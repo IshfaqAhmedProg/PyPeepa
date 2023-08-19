@@ -11,7 +11,7 @@ setup(
     description="Custom built utilities for general use",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    # url="https://github.com/yourusername/my-custom-package",
+    url="https://github.com/IshfaqAhmedProg/PyPeepa",
     packages=find_packages(),
     install_requires=[
         "pandas>=1.0.0",  # Example version requirement for pandas
