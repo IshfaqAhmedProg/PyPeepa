@@ -1,8 +1,18 @@
 from alive_progress import alive_bar
 import pandas as pd
+from typing import Callable, TypeVar, Any, Dict
+
+
+ParamType = TypeVar("ParamType", bound=Dict)
+
 
 # Process any CSV file in chunks instead of whole file at once
-async def processCSVInChunks(csv_file, chunk_size, process_function, pf_params):
+async def processCSVInChunks(
+    csv_file: str,
+    chunk_size: int,
+    process_function: Callable[[Any], pd.DataFrame],
+    pf_params: ParamType,
+):
     # Create a generator to read the CSV file in chunks
     chunk_reader = pd.read_csv(csv_file, chunksize=chunk_size)
 

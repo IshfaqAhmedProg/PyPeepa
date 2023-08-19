@@ -1,7 +1,13 @@
 import os
+from typing import Tuple
 
 
-async def getFilePath(message, endswith=(""), invalid_filetype_message="", folder=True):
+async def getFilePath(
+    message: str,
+    endswith: Tuple = (""),
+    invalid_filetype_message: str = "",
+    folder: bool = True,
+):
     while True:
         file_path = input(message)
         file_path = await sanitizeFilePath(file_path)
@@ -14,7 +20,7 @@ async def getFilePath(message, endswith=(""), invalid_filetype_message="", folde
             return file_path
 
 
-async def sanitizeFilePath(user_input):
+async def sanitizeFilePath(user_input: str):
     # Remove leading/trailing whitespaces and quotes from the user input
     user_input = user_input.strip(" '\"")
 

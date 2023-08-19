@@ -2,7 +2,7 @@ import pandas
 import warnings
 
 
-async def readData(file_path) -> pandas.DataFrame:
+async def readData(file_path: str) -> pandas.DataFrame:
     try:
         warnings.filterwarnings("error", category=pandas.errors.DtypeWarning)
         # Get the data from file

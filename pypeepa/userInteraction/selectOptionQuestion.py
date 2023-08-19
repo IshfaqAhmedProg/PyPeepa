@@ -1,5 +1,8 @@
+from typing import Optional
+
+
 async def selectOptionQuestion(
-    question: str, min: int, max: int, nullPossible: bool = False
+    question: str, min: int, max: int, nullPossible: Optional[bool] = False
 ):
     invalid_input = True
     while invalid_input:
@@ -14,7 +17,7 @@ async def selectOptionQuestion(
     return user_input
 
 
-def inputIsInt(input):
+def inputIsInt(input: str):
     try:
         val = int(input)
         return True

@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="pypeepa",
-    version="0.3",
+    version="0.5",
     author="Ishfaq Ahmed",
     author_email="ishfaqahmed0837@gmail.com",
     description="Custom built utilities for general use",
@@ -13,12 +13,7 @@ setup(
     long_description_content_type="text/markdown",
     url="https://github.com/IshfaqAhmedProg/PyPeepa",
     packages=find_packages(),
-    install_requires=[
-        "pandas>=1.0.0",  # Example version requirement for pandas
-        "alive-progress>=1.6.0",  # Example version requirement for alive-progress
-        "pyfiglet>=0.8.post1"
-        # Add more dependencies here
-    ],
+    install_requires=["pandas>=1.0.0", "alive-progress>=1.6.0", "pyfiglet>=0.8.post1"],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
