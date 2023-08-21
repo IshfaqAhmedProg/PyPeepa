@@ -14,17 +14,17 @@ def processCSVInChunks(
 ):
     """
     Process any CSV file in chunks instead of whole file at once\n\n
-    `csv_file`: Path to the csv file.\n
-    `chunk_size`: Size of chunks to work with\n
-    :strong:`process_function`: The function containing the main processing you want to get done.\n
-    `pf_args`: Arguments for the function in a dict eg:-\n
+    @param: `csv_file`: Path to the csv file.\n
+    @param:`process_function`: The function containing the main processing you want to get done.\n
+    @param:`pf_args`: Arguments for the function in a dict eg:-\n
                 def deleteRowsInCSV(dataframe,delete_rows):\n
                     # ...delete rows from csv.\n
                 await processCSVInChunks(path_to_csv,deleteRowsInCSV,{delete_rows:20})\n
-
+    @param:`chunk_size`: Size of chunks to work with\n
+    @return: Dataframe containing the processed results.
     """
     # Create a generator to read the CSV file in chunks
-    chunk_reader = pd.read_csv(csv_file, chunksize=chunk_size)
+    chunk_reader = pd.read_csv(csv_file, chunksize=chunk_size, low_memory=False)
 
     # Process each chunk and concatenate the results
     processed_chunks = []
