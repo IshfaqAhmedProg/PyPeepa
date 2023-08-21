@@ -1,10 +1,18 @@
 import os
-from typing import List
+from typing import List, Optional
 
 
-async def asyncListDir(input_dir: str) -> List[str]:
-    input_files = []
-    for file_path in os.listdir(input_dir):
-        if os.path.isfile(os.path.join(input_dir, file_path)):
-            input_files.append(file_path)
-    return input_files
+async def asyncListDir(dir: str, get: Optional[str] = None) -> List[str]:
+    content = []
+
+    for content_path in os.listdir(dir):
+        full_path = os.path.join(dir, content_path)
+
+        if get is None:
+            content.append(content_path)
+        elif get == "files" and os.path.isfile(full_path):
+            content.append(content_path)
+        elif get == "folders" and os.path.isdir(full_path):
+            content.append(content_path)
+
+    return content

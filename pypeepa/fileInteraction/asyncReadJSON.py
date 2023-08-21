@@ -1,4 +1,5 @@
 import json
+from utils import loggingHandler
 
 
 async def asyncReadJSON(file_name: str):
@@ -7,5 +8,5 @@ async def asyncReadJSON(file_name: str):
         with open(file_name, "r") as openfile:
             read_data = json.load(openfile)
     except:
-        print(f"Error reading JSON file {file_name}")
+        loggingHandler(log_mssg=f"Error reading JSON file {file_name}")
     return read_data

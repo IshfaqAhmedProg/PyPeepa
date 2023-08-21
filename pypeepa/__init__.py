@@ -6,7 +6,6 @@ from .fileInteraction import (
     readData,
     writeFile,
 )
-from .optimisations import processCSVInChunks
 from .userInteraction import (
     askYNQuestion,
     getInputFilePath,
@@ -15,23 +14,29 @@ from .userInteraction import (
     signature,
     progressBarIterator,
 )
+from .optimisations import processCSVInChunks, concurrentFutures
+from .debugging import initLogging
+from .utils import loggingHandler, ProgressSaver
 
 __author__ = "Ishfaq Ahmed"
 __email__ = "ishfaqahmed0837@gmail.com"
-__version__ = "0.5"
 __description__ = ("Custom built utilities for general use",)
 __all__ = (
-    "processCSVInChunks",
-    "getFilePath",
-    "askYNQuestion",
-    "getInputFilePath",
-    "printArray",
-    "selectOptionQuestion",
-    "signature",
-    "asyncListDir",
-    "asyncReadJSON",
-    "createDirectory",
-    "readData",
-    "writeFile",
-    "progressBarIterator",
+    ProgressSaver,
+    loggingHandler,
+    processCSVInChunks,
+    getFilePath,
+    askYNQuestion,
+    getInputFilePath,
+    printArray,
+    selectOptionQuestion,
+    signature,
+    asyncListDir,
+    asyncReadJSON,
+    createDirectory,
+    readData,
+    writeFile,
+    progressBarIterator,
+    concurrentFutures,
+    initLogging,
 )
