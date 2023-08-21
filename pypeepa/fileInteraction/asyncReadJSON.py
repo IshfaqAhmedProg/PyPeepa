@@ -1,11 +1,10 @@
 import json
-from typing import Optional, List, Any, Callable
+from typing import Optional, List, Any
 from logging import Logger
+from pypeepa.utils.loggingHandler import loggingHandler
 
 
-async def asyncReadJSON(
-    file_name: str, loggingHandler=Optional[Callable[[Logger, str], None]]
-) -> List[Any]:
+async def asyncReadJSON(file_name: str, logger: Optional[Logger] = None) -> List[Any]:
     """
     Reads a .json file and returns the result.\n
     @param: `file_name`: Name of the .json file\n
@@ -20,12 +19,12 @@ async def asyncReadJSON(
             read_data = json.load(openfile)
     except FileNotFoundError:
         fnf_mssg = f"File '{file_name}' not found."
-        print(fnf_mssg) if not loggingHandler else loggingHandler(log_mssg=fnf_mssg)
+        print(fnf_mssg) if not logger else loggingHandler(logger, fnf_mssg)
     except json.JSONDecodeError as e:
         jde_mssg = f"Error decoding JSON in '{file_name}': {e}"
-        print(jde_mssg) if not loggingHandler else loggingHandler(log_mssg=jde_mssg)
+        print(jde_mssg) if not logger else loggingHandler(logger, jde_mssg)
     except Exception as e:
         exc_mssg = f"An error occurred while reading '{file_name}': {e}"
-        print(exc_mssg) if not loggingHandler else loggingHandler(log_mssg=exc_mssg)
+        print(exc_mssg) if not logger else loggingHandler(logger, exc_mssg)
 
     return read_data
