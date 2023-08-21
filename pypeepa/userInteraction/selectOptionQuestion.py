@@ -1,7 +1,7 @@
 from typing import Optional
 
 
-async def selectOptionQuestion(
+def selectOptionQuestion(
     question: str, min: int, max: int, nullPossible: Optional[bool] = False
 ):
     invalid_input = True

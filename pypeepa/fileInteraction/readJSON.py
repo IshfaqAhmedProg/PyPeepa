@@ -4,7 +4,7 @@ from logging import Logger
 from pypeepa.utils.loggingHandler import loggingHandler
 
 
-async def asyncReadJSON(file_name: str, logger: Optional[Logger] = None) -> List[Any]:
+def readJSON(file_name: str, logger: Optional[Logger] = None) -> List[Any]:
     """
     Reads a .json file and returns the result.\n
     @param: `file_name`: Name of the .json file\n

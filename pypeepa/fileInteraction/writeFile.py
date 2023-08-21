@@ -3,7 +3,7 @@ import pandas
 from typing import Literal
 
 
-async def writeFile(
+def writeFile(
     data_to_write: pandas.DataFrame,
     file_path: str,
     file_name: str,

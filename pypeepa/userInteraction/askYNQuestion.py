@@ -1,7 +1,7 @@
 import re
 
 
-async def askYNQuestion(message):
+def askYNQuestion(message):
     invalid_input = True
     return_val = False
     while invalid_input:

@@ -1,5 +1,5 @@
-from .asyncListDir import asyncListDir
-from .asyncReadJSON import asyncReadJSON
+from .listDir import listDir
+from .readJSON import readJSON
 from .createDirectory import createDirectory
 from .getFilePath import getFilePath, sanitizeFilePath
 from .readData import readData

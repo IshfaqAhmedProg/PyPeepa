@@ -1,4 +1,4 @@
-from pypeepa.fileInteraction.asyncReadJSON import asyncReadJSON  # check
+from pypeepa.fileInteraction.readJSON import readJSON  # check
 from pypeepa.utils.loggingHandler import loggingHandler  # check
 from typing import Optional, List, Iterable, Any
 from logging import Logger
@@ -24,7 +24,7 @@ class ProgressSaver:
         self.saved_data: Optional[Iterable[Any]] = None
 
     async def initialiseJSONSaver(self):
-        self.saved_data = await asyncReadJSON(self.file_name)
+        self.saved_data = await readJSON(self.file_name)
         return self.saved_data
 
     def saveToJSON(

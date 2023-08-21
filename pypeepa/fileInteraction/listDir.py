@@ -2,7 +2,7 @@ import os
 from typing import List, Optional
 
 
-async def asyncListDir(dir: str, get: Optional[str] = None) -> List[str]:
+def listDir(dir: str, get: Optional[str] = None) -> List[str]:
     content = []
 
     for content_path in os.listdir(dir):
