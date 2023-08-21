@@ -1,5 +1,5 @@
-from fileInteraction import asyncReadJSON
-from utils import loggingHandler
+from pypeepa.fileInteraction.asyncReadJSON import asyncReadJSON  # check
+from pypeepa.utils.loggingHandler import loggingHandler  # check
 from typing import Optional, List, Any
 from logging import Logger
 import json

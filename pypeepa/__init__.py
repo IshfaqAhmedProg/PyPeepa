@@ -14,9 +14,9 @@ from .userInteraction import (
     signature,
     progressBarIterator,
 )
-from .optimisations import processCSVInChunks, concurrentFutures
+from .optimisations import processCSVInChunks, concurrentFutures, ProgressSaver
 from .debugging import initLogging
-from .utils import loggingHandler, ProgressSaver
+from .utils import loggingHandler
 
 __author__ = "Ishfaq Ahmed"
 __email__ = "ishfaqahmed0837@gmail.com"

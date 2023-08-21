@@ -2,7 +2,7 @@ import concurrent.futures
 import time
 import psutil
 from typing import Optional, Callable, Any, Iterable
-from pypeepa.utils.loggingHandler import loggingHandler
+from pypeepa.utils.loggingHandler import loggingHandler  # check
 import logging
 
 
@@ -50,13 +50,17 @@ def concurrentFutures(
                 # Get the result from the future
                 result = future.result()
                 results.append(result)
-
+                # Print memory usage
+                process = psutil.Process()
+                memory_usage = process.memory_info().rss / (1024 * 1024)  # in megabytes
                 # Calculate time_taken
                 time_taken = time.time() - start_time
 
                 loggingHandler(
                     logger=logger,
-                    log_mssg="Start: {}, Time taken: {}".format(task, time_taken),
+                    log_mssg="Start: {}, Time taken: {}s, Memory usage:, {}, MB".format(
+                        task, time_taken, memory_usage
+                    ),
                 )
             except Exception as e:
                 loggingHandler(
@@ -67,12 +71,7 @@ def concurrentFutures(
                 )
 
     loggingHandler(
-        logger=logger, log_mssg="Total time taken: {}".format(time.time() - start)
+        logger=logger, log_mssg="Total time taken: {}s".format(time.time() - start)
     )
-
-    # Print memory usage
-    process = psutil.Process()
-    memory_usage = process.memory_info().rss / (1024 * 1024)  # in megabytes
-    print("Memory usage:", memory_usage, "MB")
 
     return results
