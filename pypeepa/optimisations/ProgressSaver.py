@@ -9,9 +9,9 @@ class ProgressSaver:
     """
     Saves any kind of state in an array.\n
     @init\n
-        @param: `file_name`: Name of the file where the progress states will be saved in.\n
+        @param: `app_name`: Name of the file where the progress states will be saved in.\n
     @func: `initialiseJSONSaver`: Initialise the saver before using.\n
-    @func: `saveToJSON`: Append the progress state to an array containing previous states and save to `file_name`.json\n
+    @func: `saveToJSON`: Append the progress state to an array containing previous states and save to `app_name`.save.json\n
         @param: `new_data`: Data to save.\n
         @param: `name`: (Optional)If the save state has any name, it will be used for logging.\n
         @param: `logger` (Optional)A logger object to enable logging.\n
@@ -19,8 +19,8 @@ class ProgressSaver:
         @param: `logger` (Optional)A logger object to enable logging.\n
     """
 
-    def __init__(self, file_name) -> None:
-        self.file_name: str = file_name
+    def __init__(self, app_name) -> None:
+        self.file_name: str = f"{app_name}.save.json"
         self.saved_data: Optional[Iterable[Any]] = None
 
     async def initialiseJSONSaver(self):
