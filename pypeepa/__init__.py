@@ -5,6 +5,7 @@ from .fileInteraction import (
     createDirectory,
     readData,
     writeFile,
+    sanitizeFilePath,
 )
 from .userInteraction import (
     askYNQuestion,
@@ -23,6 +24,7 @@ __email__ = "ishfaqahmed0837@gmail.com"
 __description__ = ("Custom built utilities for general use",)
 __all__ = (
     ProgressSaver,
+    sanitizeFilePath,
     loggingHandler,
     processCSVInChunks,
     getFilePath,
