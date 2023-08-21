@@ -6,7 +6,7 @@ from typing import Callable, Optional, TypeVar, Any, Dict
 ArgsType = TypeVar("ArgsType", bound=Dict)
 
 
-async def processCSVInChunks(
+def processCSVInChunks(
     csv_file: str,
     process_function: Callable[[pd.DataFrame, Any], pd.DataFrame],
     pf_args: ArgsType,

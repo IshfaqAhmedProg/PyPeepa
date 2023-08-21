@@ -4,11 +4,13 @@ import psutil
 from typing import Optional, Callable, Any, Iterable
 from pypeepa.utils.loggingHandler import loggingHandler  # check
 import logging
+from functools import partial
 
 
 def concurrentFutures(
     process_function: Callable[[Any], Any],
     divided_tasks: Iterable[Any],
+    additional_args: Optional[tuple] = (),
     thread_executor: Optional[bool] = False,  # Default to "process" executor
     max_workers: Optional[int] = 4,
     logger: Optional[logging.Logger] = None,
@@ -19,6 +21,7 @@ def concurrentFutures(
 
     @param: `process_function`: The function that contains your processing logic.\n
     @param: `divided_tasks`:  The parameters for the process_function, It contains the divided tasks parameters in an Iterable.\n
+    @param: `additional_args`: (Optional) Any additional args you want to pass to process_function\n
     @param: `thread_executor`: (Optional) If True then ThreadPoolExcecutor will be used.\n
     @param: `max_workers`: (Optional) The maximum number of parallel processes/threads.\n
     @param: `logger`: (Optional) You can pass a logging object if you already initialized one.\n
@@ -39,7 +42,8 @@ def concurrentFutures(
     with executor_class(max_workers=max_workers) as executor:
         futures = []
         for task in divided_tasks:
-            future = executor.submit(process_function, task)
+            partial_func = partial(process_function, task, *additional_args)
+            future = executor.submit(partial_func)
             futures.append((task, future))
 
         for task, future in futures:
