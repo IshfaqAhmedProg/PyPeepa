@@ -2,7 +2,7 @@ import pandas
 import warnings
 
 
-async def readData(file_path: str) -> pandas.DataFrame:
+def readData(file_path: str) -> pandas.DataFrame:
     try:
         warnings.filterwarnings("error", category=pandas.errors.DtypeWarning)
         # Get the data from file
@@ -23,6 +23,6 @@ async def readData(file_path: str) -> pandas.DataFrame:
     return read_data
 
 
-async def getColumnHeaders(df: pandas.DataFrame) -> list:
+def getColumnHeaders(df: pandas.DataFrame) -> list:
     columns = list(df.columns)
     return columns

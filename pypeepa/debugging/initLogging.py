@@ -1,7 +1,7 @@
 import logging
 
 
-async def initLogging(app_name, level="INFO"):
+def initLogging(app_name, level="INFO"):
     """
     Initialise Logging in your app
     @params: `app_name`:Name of your app\n\n
