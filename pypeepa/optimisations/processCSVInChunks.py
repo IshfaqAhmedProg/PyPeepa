@@ -22,7 +22,7 @@ def processCSVInChunks(
                     # ...delete rows from csv.\n
                     df=df.drop(`pf_args["delete_rows"]`)\n
                     return df\n
-                await processCSVInChunks("test.csv", deleteRowsInCSV, `{"delete_rows":range(1,20)}`)\n
+                processCSVInChunks("test.csv", deleteRowsInCSV, `{"delete_rows":range(1,20)}`)\n
     @param:`chunk_size`: (Optional) Size of chunks to work with\n
     @param:`hide_progress_bar`: (Optional) Set to True if you dont want the progress bar that comes with this\n
     @return: Dataframe containing the processed results.

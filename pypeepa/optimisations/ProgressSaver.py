@@ -23,8 +23,8 @@ class ProgressSaver:
         self.file_name: str = f"{app_name}.save.json"
         self.saved_data: Optional[Iterable[Any]] = None
 
-    async def initialiseJSONSaver(self):
-        self.saved_data = await readJSON(self.file_name)
+    def initialiseJSONSaver(self):
+        self.saved_data = readJSON(self.file_name)
         return self.saved_data
 
     def saveToJSON(

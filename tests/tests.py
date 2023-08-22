@@ -11,7 +11,7 @@ from jobs.counting import counting
 
 
 async def testConcurrentFutures():
-    logger = await initLogging("TestingConcurrantFutures")
+    logger = initLogging("TestingConcurrantFutures")
 
     tasks = [8000000, 9000000]  # tasks for counting job
 
