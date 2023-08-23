@@ -12,7 +12,6 @@ from .userInteraction import (
     printArray,
     selectOptionQuestion,
     signature,
-    progressBar,
 )
 from .optimisations import processCSVInChunks, concurrentFutures, ProgressSaver
 from .debugging import initLogging
@@ -39,7 +38,6 @@ __all__ = (
     createDirectory,
     readData,
     writeFile,
-    progressBar,
     concurrentFutures,
     initLogging,
 )
