@@ -1,7 +1,7 @@
 from alive_progress import alive_bar
 import pandas as pd
 from typing import Callable, Optional, TypeVar, Any, Dict
-
+from pypeepa import checkIfListIsAllNone, progressBar
 
 ArgsType = TypeVar("ArgsType", bound=Dict)
 
@@ -25,7 +25,8 @@ def processCSVInChunks(
                 processCSVInChunks("test.csv", deleteRowsInCSV, `{"delete_rows":range(1,20)}`)\n
     @param:`chunk_size`: (Optional) Size of chunks to work with\n
     @param:`hide_progress_bar`: (Optional) Set to True if you dont want the progress bar that comes with this\n
-    @return: Dataframe containing the processed results.
+    @return:
+        If the func has return values than return the values in a list else return None\n
     """
     # Create a generator to read the CSV file in chunks
     chunk_reader = pd.read_csv(csv_file, chunksize=chunk_size, low_memory=False)
@@ -36,19 +37,20 @@ def processCSVInChunks(
     if not hide_progress_bar:
         # Count total number of lines in the csv_file
         total_chunks = int(sum(1 for row in open(csv_file, "r")) / chunk_size)
-        with alive_bar(
-            total_chunks, force_tty=True, bar="filling", spinner="waves"
-        ) as bar:
-            bar.title = "Processing file -> " + csv_file
-            for chunk in chunk_reader:
-                processed_chunk = process_function(chunk, pf_args)
-                processed_chunks.append(processed_chunk)
-                bar()
+        processed_chunks = progressBar(
+            process_function,
+            chunk_reader,
+            total_chunks,
+            f"Processing file -> {csv_file}",
+        )
     else:
-        processed_chunk = process_function(chunk, pf_args)
-        processed_chunks.append(processed_chunk)
+        for chunk in chunk_reader:
+            processed_chunk = process_function(chunk, pf_args)
+            processed_chunks.append(processed_chunk)
+
+    if checkIfListIsAllNone(processed_chunks):
+        return None
 
     # Concatenate the processed chunks into a single DataFrame
     df = pd.concat(processed_chunks, ignore_index=True)
-
     return df
