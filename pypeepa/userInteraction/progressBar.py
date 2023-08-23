@@ -1,12 +1,12 @@
 from alive_progress import alive_bar
 from typing import Iterable, Any, Callable, Optional
-from pypeepa import checkIfListIsAllNone
+from pypeepa.checks.checkIfListIsAllNone import checkIfListIsAllNone
 
 
 def progressBar(
     func: Callable[[Any], Any],
     iterable: Iterable[Any],
-    iterable_length: Optional[int],
+    iterable_length: Optional[int] = None,
     desc: Optional[str] = "Progress",
 ):
     """

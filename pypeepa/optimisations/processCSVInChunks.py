@@ -1,6 +1,7 @@
 import pandas as pd
 from typing import Callable, Optional, TypeVar, Any, Dict
-from pypeepa import checkIfListIsAllNone, progressBar
+from pypeepa.checks.checkIfListIsAllNone import checkIfListIsAllNone
+from pypeepa.userInteraction.progressBar import progressBar
 
 ArgsType = TypeVar("ArgsType", bound=Dict)
 

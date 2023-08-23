@@ -4,7 +4,7 @@ from logging import Logger
 import time
 
 
-def measureTimeToRun(func: Callable[[Any], Any], logger: Optional[Logger]):
+def measureTimeToRun(func: Callable[[Any], Any], logger: Optional[Logger] = None):
     """
     Times any function wrapped with it and if a logger is provided logs it.
     @param: `func`: the function to time.

@@ -19,12 +19,12 @@ def readJSON(file_name: str, logger: Optional[Logger] = None) -> List[Any]:
             read_data = json.load(openfile)
     except FileNotFoundError:
         fnf_mssg = f"File '{file_name}' not found."
-        print(fnf_mssg) if not logger else loggingHandler(logger, fnf_mssg)
+        loggingHandler(logger, fnf_mssg)
     except json.JSONDecodeError as e:
         jde_mssg = f"Error decoding JSON in '{file_name}': {e}"
-        print(jde_mssg) if not logger else loggingHandler(logger, jde_mssg)
+        loggingHandler(logger, jde_mssg)
     except Exception as e:
         exc_mssg = f"An error occurred while reading '{file_name}': {e}"
-        print(exc_mssg) if not logger else loggingHandler(logger, exc_mssg)
+        loggingHandler(logger, exc_mssg)
 
     return read_data
