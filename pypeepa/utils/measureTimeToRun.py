@@ -1,4 +1,4 @@
-from pypeepa import loggingHandler
+from pypeepa.utils.loggingHandler import loggingHandler  # check
 from typing import Callable, Any, Optional
 from logging import Logger
 import time

@@ -1,4 +1,3 @@
-from alive_progress import alive_bar
 import pandas as pd
 from typing import Callable, Optional, TypeVar, Any, Dict
 from pypeepa import checkIfListIsAllNone, progressBar
