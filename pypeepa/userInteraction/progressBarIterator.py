@@ -4,7 +4,7 @@ from typing import Iterable, Any, Optional
 
 def progressBarIterator(
     iterable: Iterable[Any],
-    iterableLength: Optional[int],
+    iterableLength: Optional[int] = None,
     description: Optional[str] = "Progress",
     **kwargs
 ):
