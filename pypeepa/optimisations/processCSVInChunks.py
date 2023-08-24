@@ -8,7 +8,7 @@ ArgsType = TypeVar("ArgsType", bound=Dict)
 
 def processCSVInChunks(
     csv_file: str,
-    process_function: Callable[[pd.DataFrame, Any], pd.DataFrame],
+    process_function: Callable[[pd.DataFrame, Any], Optional[pd.DataFrame]],
     pf_args: ArgsType,
     chunk_size: Optional[int] = 10000,
     hide_progress_bar: Optional[bool] = False,
