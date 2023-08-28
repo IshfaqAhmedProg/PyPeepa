@@ -3,6 +3,7 @@ from pypeepa.utils.loggingHandler import loggingHandler  # check
 from typing import Optional, List, Iterable, Any
 from logging import Logger
 import json
+import os
 
 
 class ProgressSaver:
@@ -24,6 +25,8 @@ class ProgressSaver:
         self.saved_data: Optional[Iterable[Any]] = None
 
     def initialiseJSONSaver(self):
+        if not os.path.exists(self.file_name):
+            return None
         self.saved_data = readJSON(self.file_name)
         return self.saved_data
 

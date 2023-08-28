@@ -1,7 +1,7 @@
 import pandas as pd
 from typing import Callable, Optional, TypeVar, Any, Dict
 from pypeepa.checks.checkIfListIsAllNone import checkIfListIsAllNone
-from alive_progress import alive_bar
+from pypeepa.userInteraction.progressBarIterator import progressBarIterator
 
 ArgsType = TypeVar("ArgsType", bound=Dict)
 
@@ -34,21 +34,15 @@ def processCSVInChunks(
     # Process each chunk and concatenate the results
     processed_chunks = []
     # Show progress bar by default
-    if not hide_progress_bar:
-        # Count total number of lines in the csv_file
-        total_chunks = int(sum(1 for row in open(csv_file, "r")) / chunk_size)
-        with alive_bar(
-            total_chunks, force_tty=True, bar="filling", spinner="waves"
-        ) as bar:
-            bar.title = "Processing file -> " + csv_file
-            for chunk in chunk_reader:
-                processed_chunk = process_function(chunk, pf_args)
-                processed_chunks.append(processed_chunk)
-                bar()
-    else:
-        for chunk in chunk_reader:
-            processed_chunk = process_function(chunk, pf_args)
-            processed_chunks.append(processed_chunk)
+    # Count total number of lines in the csv_file
+    total_chunks = int(sum(1 for row in open(csv_file, "r")) / chunk_size)
+    for chunk in (
+        chunk_reader
+        if hide_progress_bar
+        else progressBarIterator(chunk_reader, total_chunks, "Processing file -> ")
+    ):
+        processed_chunk = process_function(chunk, pf_args)
+        processed_chunks.append(processed_chunk)
 
     if checkIfListIsAllNone(processed_chunks):
         return None
