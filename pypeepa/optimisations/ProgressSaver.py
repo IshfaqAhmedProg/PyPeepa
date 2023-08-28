@@ -21,7 +21,8 @@ class ProgressSaver:
     """
 
     def __init__(self, app_name) -> None:
-        self.file_name: str = f"{app_name}.save.json"
+        self.home_directory = os.path.expanduser("~")
+        self.file_name: str = f"{self.home_directory}\{app_name}.save.json"
         self.saved_data: Optional[Iterable[Any]] = None
 
     def initialiseJSONSaver(self):
