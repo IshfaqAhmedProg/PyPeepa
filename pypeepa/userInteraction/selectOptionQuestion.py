@@ -14,7 +14,7 @@ def selectOptionQuestion(
                 invalid_input = False
         else:
             print(f"\x1B[31mInvalid input! Please input within\x1B[37m {min}-{max}")
-    return user_input
+    return int(user_input)
 
 
 def inputIsInt(input: str):
