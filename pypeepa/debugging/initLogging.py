@@ -1,4 +1,5 @@
 import logging
+import os
 
 
 def initLogging(app_name, level="INFO"):
@@ -32,8 +33,10 @@ def initLogging(app_name, level="INFO"):
     level_in_int = level_mapping[level]
 
     # Initialize logging
+    log_directory = f"{os.path.expanduser('~')}/{app_name}_logs"
+    save_file_name: str = f"{log_directory}\ExceptionLogs-{app_name}.log"
     logging.basicConfig(
-        filename=f"ExceptionLogs-{app_name}.log",
+        filename=save_file_name,
         format="%(asctime)s %(message)s",
     )
 

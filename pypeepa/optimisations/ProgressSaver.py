@@ -1,6 +1,7 @@
 from pypeepa.fileInteraction.readJSON import readJSON  # check
 from pypeepa.utils.loggingHandler import loggingHandler  # check
-from typing import Optional, List, Iterable, Any
+from pypeepa.fileInteraction.createDirectory import createDirectory
+from typing import Optional, Iterable, Any
 from logging import Logger
 import json
 import os
@@ -21,21 +22,24 @@ class ProgressSaver:
     """
 
     def __init__(self, app_name) -> None:
-        self.home_directory = os.path.expanduser("~")
-        self.file_name: str = f"{self.home_directory}\{app_name}.save.json"
+        self.save_directory = f"{os.path.expanduser('~')}/{app_name}_saves"
+        self.save_file_name: str = f"{self.save_directory}\{app_name}.save.json"
         self.saved_data: Optional[Iterable[Any]] = None
 
     def initialiseJSONSaver(self):
-        if not os.path.exists(self.file_name):
+        if not os.path.exists(
+            self.save_file_name
+        ):  # If save file doesnt exist return None
             return None
-        self.saved_data = readJSON(self.file_name)
+        self.saved_data = readJSON(self.save_file_name)
         return self.saved_data
 
     def saveToJSON(
         self, new_data: Any, name: str = None, logger: Optional[Logger] = None
     ):
         self.saved_data.append(new_data)
-        with open(self.file_name, "w+") as completed_output:
+        createDirectory(self.save_directory)  # Create directory if it doesnt exist
+        with open(self.save_file_name, "w+") as completed_output:
             loggingHandler(
                 logger, f"Saving file: -> {name}" if name else "Saving file!"
             )
@@ -43,6 +47,6 @@ class ProgressSaver:
 
     def resetSavedData(self, logger: Optional[Logger] = None):
         self.saved_data = []
-        with open(self.file_name, "w+") as completed_output:
+        with open(self.save_file_name, "w+") as completed_output:
             loggingHandler(logger, f"Clearing saved progress!")
             json.dump(self.saved_data, completed_output)
