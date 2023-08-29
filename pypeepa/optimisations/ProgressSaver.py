@@ -24,11 +24,7 @@ class ProgressSaver:
     def __init__(self, app_name) -> None:
         self.save_directory = f"{app_name}_saves"
         self.save_file_name = os.path.join(self.save_directory, f"{app_name}.save.json")
-        self.saved_data: Optional[Iterable[Any]] = None
-
-    def initialiseJSONSaver(self):
-        self.saved_data = readJSON(self.save_file_name)
-        return self.saved_data
+        self.saved_data: Iterable[Any] = readJSON(self.save_file_name)
 
     def saveToJSON(
         self, new_data: Any, name: str = None, logger: Optional[Logger] = None
