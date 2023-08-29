@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="pypeepa",
-    version="3.7",
+    version="3.8",
     author="Ishfaq Ahmed",
     author_email="ishfaqahmed0837@gmail.com",
     description="Custom built utilities for general use",
