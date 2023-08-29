@@ -1,5 +1,6 @@
 import logging
 import os
+from pypeepa.fileInteraction.createDirectory import createDirectory
 
 
 def initLogging(app_name, level="INFO"):
@@ -34,6 +35,7 @@ def initLogging(app_name, level="INFO"):
 
     # Initialize logging
     log_directory = f"{os.path.expanduser('~')}/{app_name}_logs"
+    createDirectory(log_directory)
     save_file_name: str = f"{log_directory}\ExceptionLogs-{app_name}.log"
     logging.basicConfig(
         filename=save_file_name,
