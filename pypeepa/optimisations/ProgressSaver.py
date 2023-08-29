@@ -29,8 +29,8 @@ class ProgressSaver:
     def initialiseJSONSaver(self):
         if not os.path.exists(
             self.save_file_name
-        ):  # If save file doesnt exist return None
-            return None
+        ):  # If save file doesnt exist return empty array
+            return []
         self.saved_data = readJSON(self.save_file_name)
         return self.saved_data
 
