@@ -30,7 +30,11 @@ def processCSVInChunks(
     """
     # Create a generator to read the CSV file in chunks
     chunk_reader = pd.read_csv(
-        csv_file, chunksize=chunk_size, low_memory=False, encoding_errors="ignore"
+        csv_file,
+        chunksize=chunk_size,
+        low_memory=False,
+        encoding_errors="ignore",
+        on_bad_lines="skip",
     )
 
     # Process each chunk and concatenate the results
