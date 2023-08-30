@@ -4,3 +4,4 @@ from .selectOptionQuestion import selectOptionQuestion
 from .signature import signature
 from .getFilePath import getFilePath, sanitizeFilePath
 from .progressBarIterator import progressBarIterator
+from .askHeaderForMultipleCSV import askHeaderForMultipleCSV
