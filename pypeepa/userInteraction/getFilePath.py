@@ -5,7 +5,7 @@ from typing import Tuple
 def getFilePath(
     message: str,
     endswith: Tuple = (""),
-    invalid_filetype_message: str = "",
+    invalid_filetype_message: str = "Invalid File Type",
     folder: bool = True,
 ):
     while True:
