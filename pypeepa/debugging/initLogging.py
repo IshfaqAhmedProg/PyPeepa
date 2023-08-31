@@ -34,7 +34,7 @@ def initLogging(app_name, level="INFO"):
     level_in_int = level_mapping[level]
 
     # Initialize logging
-    log_directory = f"{app_name}_logs"
+    log_directory = f"logs"
     save_file_name = os.path.join(log_directory, f"ExceptionLogs-{app_name}.log")
     createDirectory(log_directory)
     logging.basicConfig(
