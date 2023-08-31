@@ -1,7 +1,8 @@
 from typing import Optional
+from pypeepa.checks.checkInputIsInt import checkInputIsInt
 
 
-def selectOptionQuestion(
+def askSelectOptionQuestion(
     question: str, min: int, max: int, null_possible: Optional[bool] = False
 ) -> int | None:
     """
@@ -18,22 +19,10 @@ def selectOptionQuestion(
         return_value = None
         if user_input == "" and null_possible:
             invalid_input = False
-        elif inputIsInt(user_input):
+        elif checkInputIsInt(user_input):
             if min <= int(user_input) <= max:
                 invalid_input = False
                 return_value = int(user_input)
         else:
             print(f"\x1B[31mInvalid input! Please input within\x1B[37m {min}-{max}")
     return return_value
-
-
-def inputIsInt(input: str) -> bool:
-    try:
-        val = int(input)
-        return True
-    except ValueError:
-        try:
-            val = float(input)
-            return False
-        except ValueError:
-            return False

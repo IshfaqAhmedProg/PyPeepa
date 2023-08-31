@@ -2,7 +2,7 @@ from typing import List, Tuple
 from pandas import read_csv
 import numpy
 import os
-from pypeepa.userInteraction.selectOptionQuestion import selectOptionQuestion
+from pypeepa.userInteraction.askSelectOptionQuestion import askSelectOptionQuestion
 from pypeepa.userInteraction.printArray import printArray
 
 
@@ -22,7 +22,7 @@ def askHeaderForMultipleCSV(csv_list: List[str], csv_dir: str) -> List[Tuple[str
         ).columns
         if not numpy.array_equal(numpy.array(prev_cols), numpy.array(current_columns)):
             printArray(current_columns)
-            col_index = selectOptionQuestion(
+            col_index = askSelectOptionQuestion(
                 question=f"Enter the index of the column you want to match.",
                 min=1,
                 max=len(current_columns),
