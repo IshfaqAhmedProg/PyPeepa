@@ -1,6 +1,7 @@
 from pypeepa.fileInteraction.readJSON import readJSON  # check
 from pypeepa.utils.loggingHandler import loggingHandler  # check
 from pypeepa.fileInteraction.createDirectory import createDirectory
+from pypeepa.userInteraction.askYNQuestion import askYNQuestion
 from typing import Optional, Iterable, Any
 from logging import Logger
 import json
@@ -17,6 +18,8 @@ class ProgressSaver:
         @param: `name`: (Optional)If the save state has any name, it will be used for logging.\n
         @param: `logger` (Optional)A logger object to enable logging.\n
     @func `resetSavedData`: Resets the progress\n
+        @param: `logger` (Optional)A logger object to enable logging.\n
+    @func `askToContinue`: Ask the user if they want to continue from before or not.\n
         @param: `logger` (Optional)A logger object to enable logging.\n
     """
 
@@ -41,3 +44,9 @@ class ProgressSaver:
         with open(self.save_file_name, "w+") as completed_output:
             loggingHandler(logger, f"Clearing saved progress!")
             json.dump(self.saved_data, completed_output)
+
+    def askToContinue(self, logger: Optional[Logger] = None):
+        if len(self.saved_data) > 0:
+            continue_from_before = askYNQuestion("Continue from before?(y/n)")
+            if not continue_from_before:
+                self.resetSavedData(logger)
