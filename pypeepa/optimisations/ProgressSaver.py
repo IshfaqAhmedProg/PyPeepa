@@ -29,7 +29,7 @@ class ProgressSaver:
         self.saved_data: Iterable[Any] = readJSON(self.save_file_name)
 
     def saveToJSON(
-        self, new_data: Any, name: str = None, logger: Optional[Logger] = None
+        self, new_data: Any, name: Optional[str] = None, logger: Optional[Logger] = None
     ):
         self.saved_data.append(new_data)
         createDirectory(self.save_directory)  # Create directory if it doesnt exist
