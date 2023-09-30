@@ -4,6 +4,7 @@ from .fileInteraction import (
     createDirectory,
     readData,
     writeFile,
+    countTotalRows,
 )
 from .userInteraction import (
     getFilePath,
@@ -26,6 +27,7 @@ __email__ = "ishfaqahmed0837@gmail.com"
 __description__ = ("Custom built utilities for general use",)
 __all__ = (
     ProgressSaver,
+    countTotalRows,
     askSelectRangeQuestion,
     checkInputIsInt,
     askHeaderForMultipleCSV,
