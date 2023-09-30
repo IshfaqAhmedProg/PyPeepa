@@ -15,7 +15,7 @@ def processCSVInChunks(
 ):
     """
     Process any CSV file in chunks instead of whole file at once\n\n
-    @param: `csv_file`: Path to the csv file.\n
+    @param:`csv_file`: Path to the csv file.\n
     @param:`process_function`: The function containing the main processing you want to get done.\n
     @param:`pf_args`: Arguments for the function in a dict eg:-\n
                 def deleteRowsInCSV(df,`pf_args`):\n
