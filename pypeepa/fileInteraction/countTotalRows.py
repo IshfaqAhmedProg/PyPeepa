@@ -5,6 +5,4 @@ def countTotalRows(file_path: str):
     @return:
        The total line count
     """
-    with open(file_path, "r") as file:
-        line_count = sum(1 for line in file)
-    return line_count
+    return sum(1 for row in open(file_path, "r", errors="ignore"))
