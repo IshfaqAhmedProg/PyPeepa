@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="pypeepa",
-    version="5.3",
+    version="5.4",
     author="Ishfaq Ahmed",
     author_email="ishfaqahmed0837@gmail.com",
     description="Custom built utilities for general use",
@@ -18,6 +18,7 @@ setup(
         "alive-progress>=1.6.0",
         "pyfiglet>=0.8.post1",
         "psutil>=5.9.5",
+        "chardet>=5.2.0",
     ],
     classifiers=[
         "Programming Language :: Python :: 3",
